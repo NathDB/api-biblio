@@ -1,11 +1,11 @@
 from rest_framework import serializers
-from api.models import Api
+from livres.models import Livre
 
 
-class ApiSerializer(serializers.ModelSerializer):
+class LivreSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Api
+        model = Livre
         fields = ('id',
                   'titre',
                   'auteur',
