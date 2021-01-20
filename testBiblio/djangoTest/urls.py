@@ -19,5 +19,5 @@ from django.conf.urls import url, include
 
 
 urlpatterns = [
-    url('^', include('livres.urls')),
+    url('^', include('biblio.urls')),
 ]
