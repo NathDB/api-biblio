@@ -54,6 +54,34 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
 ]
 
+#AUTH0
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
+
+JWT_AUTH = {
+    'JWT_PAYLOAD_GET_USERNAME_HANDLER':
+        'auth0authorization.utils.jwt_get_username_from_payload_handler',
+    'JWT_DECODE_HANDLER':
+        'auth0authorization.utils.jwt_decode_token',
+    'JWT_ALGORITHM': 'RS256',
+    'JWT_AUDIENCE': 'https://django-vuejs.natachouille.com', #IDENTIFIER
+    'JWT_ISSUER': 'https://django-vuejs.natachouille.com/', #DOMAIN
+    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
+}
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'django.contrib.auth.backends.RemoteUserBackend',
+]
+
 ROOT_URLCONF = 'djangoTest.urls'
 
 TEMPLATES = [
