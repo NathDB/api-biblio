@@ -116,9 +116,9 @@ WSGI_APPLICATION = 'djangoTest.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'biblio_test',
-        'USER': 'biblio_test',
-        'PASSWORD': 'biblio_test',
+        'NAME': 'biblio',
+        'USER': 'biblio',
+        'PASSWORD': 'Epsi2021!',
         'HOST': '127.0.0.1',
         'PORT': '3306',
     }
