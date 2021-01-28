@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'biblio.apps.BiblioConfig',
     'corsheaders',
+    #'social_django',
 ]
 
 MIDDLEWARE = [
@@ -81,6 +82,12 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'django.contrib.auth.backends.RemoteUserBackend',
 ]
+
+# #AUTHENTIFICATION WITH AUTH0
+# SOCIAL_AUTH_TRAILING_SLASH = False  # Remove trailing slash from routes
+# SOCIAL_AUTH_AUTH0_DOMAIN = 'YOUR_DOMAIN'
+# SOCIAL_AUTH_AUTH0_KEY = 'YOUR_CLIENT_ID'
+# SOCIAL_AUTH_AUTH0_SECRET = 'YOUR_CLIENT_SECRET'
 
 ROOT_URLCONF = 'djangoTest.urls'
 
