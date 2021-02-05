@@ -1,5 +1,6 @@
 from django.conf.urls import url
 from biblio import views
+from django.urls import path
 
 urlpatterns = [
 
@@ -12,6 +13,16 @@ urlpatterns = [
     #ROUTES VERS LES CATEGORIES
 
     url('biblio/categories$', views.categorie_list), #Route vers une catégorie en fct de l'id
-    url('biblio/categories/(?P<pk>[0-9]+)$', views.categorie_detail) #Route vers une catégorie en fct de l'id
+    url('biblio/categories/(?P<pk>[0-9]+)$', views.categorie_detail), #Route vers une catégorie en fct de l'id
+
+    #ROUTES VERS LES LISTES
+
+    url('biblio/listes$', views.liste_list),
+    url('biblio/listes/(?P<pk>[0-9]+)$', views.liste_detail),
+
+    #ROUTES VERS LES LIVRES_SUGGERES
+
+    url('biblio/livres_sugg$', views.livre_sugg_list),
+    url('biblio/livres_sugg/(?P<pk>[0-9]+)$', views.livre_sugg_detail),
 
 ]
