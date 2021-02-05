@@ -14,6 +14,7 @@ from biblio.serializers import ListeSerializer
 from biblio.serializers import LivreSuggereSerializer
 from rest_framework.decorators import api_view
 
+
 #CRUD LIVRES
 @api_view(['GET', 'POST', 'DELETE'])
 def livre_list(request):
@@ -223,8 +224,3 @@ def livre_sugg_detail(request, pk):
         return JsonResponse({'message': '{} La livre suggéré a bien été supprimé !'.format(supp)}, status=status.HTTP_204_NO_CONTENT)
 
 #CRUD PROFIL
-@api_view(['GET', 'PUT', 'DELETE'])
-def update_profile(request, user_id):
-    user = User.objects.get(pk=user_id)
-    user.profile.bio = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit...'
-    user.save()

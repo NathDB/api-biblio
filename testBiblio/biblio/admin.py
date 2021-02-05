@@ -8,7 +8,7 @@ class ProfileInline(admin.StackedInline):
     model = Profil
     can_delete = False
     verbose_name_plural = 'Profil'
-    fk_name = 'id_user'
+    fk_name = 'user'
 
 class CustomUserAdmin(UserAdmin):
     inlines = (ProfileInline, )
@@ -16,8 +16,7 @@ class CustomUserAdmin(UserAdmin):
     def get_inline_instances(self, request, obj=None):
         if not obj:
             return list()
-        return super(CustomUserAdmin, self).get_inline_instances()(CustomUserAdmin, self).get_inline_instances(request, obj)
-
+        return super(CustomUserAdmin, self).get_inline_instances(request, obj)
 
 admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)

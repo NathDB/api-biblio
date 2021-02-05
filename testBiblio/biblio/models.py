@@ -5,24 +5,20 @@ from django.dispatch import receiver
 
 #Modèle Profil
 class Profil(models.Model):
-    id_user = models.OneToOneField(User, on_delete=models.CASCADE)
-    score = models.SmallIntegerField()
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    score = models.SmallIntegerField(default=0)
     avatar = models.ImageField(null=True)
-    dateNaissance = models.DateField(null=True, blank=True)
-    bio = models.TextField(max_length=500, blank=True)
-    pays = models.CharField(max_length=30, blank=True)
+    dateNaissance = models.DateField(null=True, default='', blank=True)
+    bio = models.TextField(max_length=500, default='Coucou', blank=True)
+    pays = models.CharField(max_length=30, default='France', blank=True)
 
-    #Méthodes permettant d'associer un user à un profil, de mettre à jour et de créer un profil quand un user est créé
     def __str__(self):  # __unicode__ for Python 2
         return self.user.username
 
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:
-        Profil.objects.created(user=instance)
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
+        Profil.objects.create(user=instance)
     instance.profil.save()
 
 
