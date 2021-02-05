@@ -25,4 +25,9 @@ urlpatterns = [
     url('biblio/livres_sugg$', views.livre_sugg_list),
     url('biblio/livres_sugg/(?P<pk>[0-9]+)$', views.livre_sugg_detail),
 
+    #ROUTES VERS LES LIVRES_SUGGERES
+
+    url('biblio/livres_sugg$', views.livre_sugg_list),
+    url('biblio/livres_sugg/(?P<pk>[0-9]+)$', views.livre_sugg_detail),
+
 ]

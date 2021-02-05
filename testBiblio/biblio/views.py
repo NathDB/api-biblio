@@ -3,6 +3,7 @@ from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser
 from rest_framework import status
 
+from biblio.models import User
 from biblio.models import Livre
 from biblio.models import Categorie
 from biblio.models import Liste
@@ -220,3 +221,10 @@ def livre_sugg_detail(request, pk):
         supp = LivreSuggere.objects.get(pk=pk)
         supp.delete()
         return JsonResponse({'message': '{} La livre suggéré a bien été supprimé !'.format(supp)}, status=status.HTTP_204_NO_CONTENT)
+
+#CRUD PROFIL
+@api_view(['GET', 'PUT', 'DELETE'])
+def update_profile(request, user_id):
+    user = User.objects.get(pk=user_id)
+    user.profile.bio = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit...'
+    user.save()
