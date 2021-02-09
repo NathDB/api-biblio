@@ -8,9 +8,9 @@ class Profil(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     score = models.SmallIntegerField(default=0)
     avatar = models.ImageField(null=True)
-    dateNaissance = models.DateField(null=True, default='', blank=True)
-    bio = models.TextField(max_length=500, default='Coucou', blank=True)
-    pays = models.CharField(max_length=30, default='France', blank=True)
+    dateNaissance = models.DateField(null=True, blank=True)
+    bio = models.TextField(max_length=500, blank=True)
+    pays = models.CharField(max_length=30, blank=True)
 
     def __str__(self):  # __unicode__ for Python 2
         return self.user.username
